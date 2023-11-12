@@ -17,7 +17,7 @@
     extraConfig = ''
 
     # Monitor
-    monitor=DP-1,highrr,auto,1.5
+    monitor=,highrr,auto,1.5
 
     # Fix slow startup
     exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
