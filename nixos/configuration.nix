@@ -25,29 +25,32 @@
     xkbVariant = "dvp";
   };
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
   services.blueman.enable = true;
 
   #NvidiaConfig
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+  hardware= {
+    opengl.enable = true;
+    opengl.driSupport = true;
+    opengl.driSupport32Bit = true;
 
-    extraPackages = with pkgs; [
+    opengl.extraPackages = with pkgs; [
       intel-media-driver
       vaapiVdpau
       libvdpau-va-gl
     ];
+
+    bluetooth.enable = true; # enables support for Bluetooth
+    bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    pulseaudio.enable = false;
   };
 
   # Configure console keymap
   console.keyMap = "dvorak-programmer";
 
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
