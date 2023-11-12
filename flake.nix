@@ -22,7 +22,7 @@ let
 
 in {
 nixosConfigurations = {
-    enzo = lib.nixosSystem rec {
+    samuelb = lib.nixosSystem rec {
       inherit system;
       specialArgs = { inherit hyprland; };
       modules = [ 
@@ -32,7 +32,7 @@ nixosConfigurations = {
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.enzo = import ./home/home.nix ;
+          home-manager.users.samuelb = import ./home/home.nix ;
           home-manager.extraSpecialArgs = specialArgs;
         }
       ];

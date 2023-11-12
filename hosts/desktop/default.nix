@@ -11,7 +11,7 @@
     enable = true;
     settings = {
       initial_session = {
-        user = "enzo";
+        user = "samuelb";
         command = "$SHELL -l";
       };
     };

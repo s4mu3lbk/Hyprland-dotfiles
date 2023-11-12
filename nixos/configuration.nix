@@ -8,79 +8,43 @@
     ];
 
   # Bootloader.
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
-
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "nodev" ];
-  boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
-
-  boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
-    pname = "distro-grub-themes";
-    version = "3.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "AdisonCavani";
-      repo = "distro-grub-themes";
-      rev = "v3.1";
-      hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
-    };
-    installPhase = "cp -r customize/nixos $out";
-  };
+  boot.kernelParams = [ "i915.force_probe=a7a0" ];
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "America/Sao_Paulo";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_BR.UTF-8";
-    LC_IDENTIFICATION = "pt_BR.UTF-8";
-    LC_MEASUREMENT = "pt_BR.UTF-8";
-    LC_MONETARY = "pt_BR.UTF-8";
-    LC_NAME = "pt_BR.UTF-8";
-    LC_NUMERIC = "pt_BR.UTF-8";
-    LC_PAPER = "pt_BR.UTF-8";
-    LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
+  time.timeZone = "Africa/Addis_Ababa";
+
+  services.xserver = {
+    enable = true;
+
+    # X11 keymap
+    layout = "us";
+    xkbVariant = "dvp";
   };
 
-   services.xserver = {
-   enable = true;
-   videoDrivers = ["nvidia"];
-    # X11 keymap
-    layout = "br";
-    xkbVariant = "";
-  };
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  services.blueman.enable = true;
 
   #NvidiaConfig
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-  };
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "#nvidia-x11"
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vaapiVdpau
+      libvdpau-va-gl
     ];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = false;
-
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
-  programs.steam = {
-   enable = true;
-   remotePlay.openFirewall = true;
-   dedicatedServer.openFirewall = true;
-  };
   # Configure console keymap
-  console.keyMap = "br-abnt2";
+  console.keyMap = "dvorak-programmer";
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -102,13 +66,11 @@
    NIXPKGS_ALLOW_UNFREE = "1";
   };
   
-  users.users.enzo = {
+  users.users.samuelb = {
     isNormalUser = true;
-    description = "Enzo";
+    description = "Samuel";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
-      firefox
-      (opera.override { proprietaryCodecs = true; })
       neofetch
       lolcat
    ];

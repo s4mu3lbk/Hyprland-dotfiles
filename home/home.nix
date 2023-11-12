@@ -9,27 +9,28 @@
   ];
 
   home = {
-    username = "enzo";
-    homeDirectory = "/home/enzo";
+    username = "samuelb";
+    homeDirectory = "/home/samuelb";
   };
 
   home.packages = (with pkgs; [
     
     #User Apps
     celluloid
-    discord
-    librewolf
+    #discord
+    #librewolf
     cool-retro-term
     bibata-cursors
-    vscode
+    #vscode
     lollypop
-    lutris
+    #lutris
     openrgb
-    betterdiscord-installer
+    #betterdiscord-installer
     
 
     #utils
-    ranger
+    vifm
+    #ranger
     wlr-randr
     git
     rustup
@@ -54,7 +55,7 @@
     pamixer
     mpc-cli
     tty-clock
-    exa
+    eza
     btop
 
   ]) ++ (with pkgs.gnome; [ 

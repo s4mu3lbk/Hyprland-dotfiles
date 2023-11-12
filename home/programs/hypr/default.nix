@@ -14,11 +14,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
-    nvidiaPatches = true;
     extraConfig = ''
 
     # Monitor
-    monitor=DP-1,1920x1080@165,auto,1
+    monitor=DP-1,highrr,auto,1.5
 
     # Fix slow startup
     exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -29,19 +28,19 @@
     exec-once = hyprctl setcursor Bibata-Modern-Classic 24
     exec-once = dunst
 
-    source = /home/enzo/.config/hypr/colors
+    source = /home/samuelb/.config/hypr/colors
     exec = pkill waybar & sleep 0.5 && waybar
     exec-once = swww init & sleep 0.5 && exec wallpaper_random
-    # exec-once = swww img /home/enzo/Imagens/wallpapers/konichiwa.png
+    # exec-once = swww img /home/samuelb/Imagens/wallpapers/konichiwa.png
 
     # Set en layout at startup
 
     # Input config
     input {
-        kb_layout = br,us
-        kb_variant =
+        kb_layout = us
+        kb_variant = dvp
         kb_model =
-        kb_options =
+        kb_options = ctrl:nocaps
         kb_rules =
 
         follow_mouse = 1
