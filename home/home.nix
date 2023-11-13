@@ -45,6 +45,7 @@
     #misc 
     cava
     neovim
+    neovide
     nano
     rofi
     nitch

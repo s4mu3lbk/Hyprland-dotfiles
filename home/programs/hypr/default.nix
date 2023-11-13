@@ -17,7 +17,7 @@
     extraConfig = ''
 
     # Monitor
-    monitor=,highrr,auto,1.5
+    monitor=,preferred,auto,1.5
 
     # Fix slow startup
     exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -127,7 +127,8 @@
     bind = $mainMod, B, exec, vivaldi
     bind = $mainMod, Q, killactive,
     bind = $mainMod, M, exit,
-    bind = $mainMod, F, exec, nautilus
+    bind = $mainMod, N, exec, nautilus
+    bind = $mainMod, F, fullscreen
     bind = $mainMod, V, togglefloating,
     bind = $mainMod, w, exec, wofi --show drun
     bind = $mainMod, R, exec, rofiWindow
