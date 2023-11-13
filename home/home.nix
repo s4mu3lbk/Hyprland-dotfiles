@@ -17,20 +17,18 @@
     
     #User Apps
     celluloid
-    #discord
-    #librewolf
+    discord
+    vivaldi
     cool-retro-term
     bibata-cursors
-    #vscode
     lollypop
-    #lutris
     openrgb
-    #betterdiscord-installer
+    betterdiscord-installer
     
 
     #utils
+    fasd
     vifm
-    #ranger
     wlr-randr
     git
     rustup
@@ -55,7 +53,7 @@
     pamixer
     mpc-cli
     tty-clock
-    eza
+    exa
     btop
 
   ]) ++ (with pkgs.gnome; [ 

@@ -29,7 +29,7 @@
         };
       };
       shell = {
-        program = "/usr/bin/env zsh";
+        program = "/usr/bin/env fish";
       };
     };
   };

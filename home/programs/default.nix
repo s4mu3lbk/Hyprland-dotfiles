@@ -6,6 +6,6 @@
     ./kitty
     ./rofi
     ./waybar
-    ./zsh
+    ./fish
   ];
 }
