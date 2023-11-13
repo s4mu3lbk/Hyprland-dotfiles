@@ -6,7 +6,7 @@
     EDITOR = "lvim";
     BROWSER = "vivaldi";
     TERMINAL = "alacritty";
-    LIBVA_DRIVER_NAME= "i915"; # hardware acceleration
+    LIBVA_DRIVER_NAME= "iHD"; # hardware acceleration
     __GL_VRR_ALLOWED="1";
     WLR_DRM_DEVICES="/dev/dri/card0";
     WLR_NO_HARDWARE_CURSORS = "1";

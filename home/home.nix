@@ -27,6 +27,8 @@
     
 
     #utils
+    fzf
+    grc
     fasd
     vifm
     wlr-randr

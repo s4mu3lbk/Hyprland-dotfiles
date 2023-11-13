@@ -16,7 +16,7 @@
 
       font = {
         normal = {
-          family = "Hack";
+          family = "Hack Nerd Font";
           style = "Medium";
         };
         size = 12;
@@ -24,12 +24,12 @@
 
       window = {
         padding = {
-          x = 12;
-          y = 12;
+          x = 5;
+          y = 5;
         };
       };
       shell = {
-        program = "/usr/bin/env fish";
+        program = "fish";
       };
     };
   };

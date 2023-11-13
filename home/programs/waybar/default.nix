@@ -33,11 +33,11 @@
                  background-color: transparent;
                }
                window > box {
-                 margin-left: 5px;
-                 margin-right: 5px;
-                 margin-top: 5px;
+                 margin-left: 3px;
+                 margin-right: 3px;
+                 margin-top: 3px;
                  background-color: #1e1e2a;
-                 padding: 3px;
+                 padding: 1px;
                  padding-left:8px;
                  border: 2px none #33ccff;
                }

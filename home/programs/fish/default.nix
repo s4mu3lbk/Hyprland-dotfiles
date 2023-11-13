@@ -10,6 +10,8 @@
     };
 
     plugins = [
+      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
       {
         name = "z";
         src = pkgs.fetchFromGitHub {
