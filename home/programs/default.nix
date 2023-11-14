@@ -8,5 +8,7 @@
     ./waybar
     ./fish
     ./nvim
+    ./tmux
+    ./direnv.nix
   ];
 }
