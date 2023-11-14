@@ -17,6 +17,15 @@
 
   time.timeZone = "Africa/Addis_Ababa";
 
+  services = {
+    supergfxd.enable = true;
+
+    asusd = {
+      enable = true;
+      enableUserService = true;
+    };
+  };
+
   services.xserver = {
     enable = true;
 

@@ -7,5 +7,6 @@
     ./rofi
     ./waybar
     ./fish
+    ./nvim
   ];
 }
