@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  programs.direnv = {
+  programs.starship = {
     enable = true;
   };
 }
