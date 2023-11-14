@@ -6,6 +6,6 @@
     viAlias = true;
     vimAlias = true;
 
-    extraConfig = lib.fileContents ./config/init.lua;
+    extraConfig = lib.fileContents ./init.lua;
   };
 }
