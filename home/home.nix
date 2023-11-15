@@ -1,4 +1,4 @@
-{ hyprland, pkgs, ...}: {
+{ hyprland, pkgs, ... }: {
 
   imports = [
     hyprland.homeManagerModules.default
@@ -14,7 +14,7 @@
   };
 
   home.packages = (with pkgs; [
-    
+
     #User Apps
     celluloid
     discord
@@ -24,7 +24,6 @@
     lollypop
     openrgb
     betterdiscord-installer
-    
 
     #utils
     fzf
@@ -33,6 +32,7 @@
     vifm
     wlr-randr
     git
+    gitflow
     rustup
     gnumake
     catimg
@@ -57,13 +57,7 @@
     exa
     btop
 
-  ]) ++ (with pkgs.gnome; [ 
-    nautilus
-    zenity
-    gnome-tweaks
-    eog
-    gedit
-  ]);
+  ]) ++ (with pkgs.gnome; [ nautilus zenity gnome-tweaks eog gedit ]);
 
   programs.home-manager.enable = true;
 
