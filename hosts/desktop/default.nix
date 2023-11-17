@@ -1,8 +1,7 @@
-{ config, lib, pkgs, ... }:
-{
+{ config, lib, pkgs, ... }: {
   imports = [
     ./fonts
-    ./virtualisation
+    #./virtualisation
     ./services
   ];
 
@@ -17,7 +16,7 @@
     };
   };
 
-programs = {
+  programs = {
     bash = {
       interactiveShellInit = ''
         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then

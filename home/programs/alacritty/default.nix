@@ -1,17 +1,13 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
-  home.packages = lib.optionals config.programs.alacritty.enable [pkgs.nerdfonts];
+{ config, pkgs, lib, ... }: {
+  home.packages =
+    lib.optionals config.programs.alacritty.enable [ pkgs.nerdfonts ];
 
   programs.alacritty = {
     enable = true;
 
     settings = {
       import = [
-        "${pkgs.vimPlugins.nightfox-nvim}/extra/carbonfox/nightfox_alacritty.yml"
+        #"${pkgs.vimPlugins.nightfox-nvim}/extra/carbonfox/nightfox_alacritty.yml"
       ];
 
       font = {
@@ -28,9 +24,7 @@
           y = 5;
         };
       };
-      shell = {
-        program = "fish";
-      };
+      shell = { program = "tmux"; };
     };
   };
 }

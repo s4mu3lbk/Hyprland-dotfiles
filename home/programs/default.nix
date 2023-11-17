@@ -9,7 +9,7 @@
     ./fish
     ./nvim
     ./tmux
-    ./direnv.nix
-    ./starship.nix
+    ./direnv
+    ./starship
   ];
 }

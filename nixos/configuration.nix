@@ -1,11 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../hosts/desktop
-    ];
+  imports = [ ./hardware-configuration.nix ../hosts/desktop ];
 
   # Bootloader.
   boot.kernelParams = [ "i915.force_probe=a7a0" ];
@@ -17,14 +13,37 @@
 
   time.timeZone = "Africa/Addis_Ababa";
 
-  services = {
-    supergfxd.enable = true;
+  services.power-profiles-daemon.enable = false;
 
-    asusd = {
-      enable = true;
-      enableUserService = true;
+  services.system76-scheduler.settings.cfsProfiles.enable = true;
+
+  ## Power
+  services.thermald.enable = true;
+
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;
+
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 20;
     };
   };
+
+  powerManagement.powertop.enable = true;
 
   services.xserver = {
     enable = true;
@@ -40,7 +59,7 @@
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
-  hardware= {
+  hardware = {
     opengl.enable = true;
     opengl.driSupport = true;
     opengl.driSupport32Bit = true;
@@ -53,7 +72,8 @@
     ];
 
     bluetooth.enable = true; # enables support for Bluetooth
-    bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    bluetooth.powerOnBoot =
+      true; # powers up the default Bluetooth controller on boot
     pulseaudio.enable = false;
   };
 
@@ -70,23 +90,16 @@
   };
 
   # add /.local to $PATH
-  environment.variables={
-   NIXOS_OZONE_WL = "1";
-   PATH = [
-     "\${HOME}/.local/bin"
-     "\${HOME}/.config/rofi/scripts"
-   ];
-   NIXPKGS_ALLOW_UNFREE = "1";
+  environment.variables = {
+    NIXOS_OZONE_WL = "1";
+    PATH = [ "\${HOME}/.local/bin" "\${HOME}/.config/rofi/scripts" ];
+    NIXPKGS_ALLOW_UNFREE = "1";
   };
-  
+
   users.users.samuelb = {
     isNormalUser = true;
     description = "Samuel";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      neofetch
-      lolcat
-   ];
   };
 
   # Allow unfree packages
@@ -100,15 +113,15 @@
   };
 
   system.autoUpgrade = {
-   enable = true;
-   channel = "https://nixos.org/channels/nixos-23.05";
+    enable = true;
+    channel = "https://nixos.org/channels/nixos-23.05";
   };
- 
+
   system.stateVersion = "23.05";
-  
+
   #Flakes
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
- };
+  };
 }

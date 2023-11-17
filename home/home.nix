@@ -19,21 +19,17 @@
     celluloid
     discord
     vivaldi
-    cool-retro-term
     bibata-cursors
     lollypop
-    openrgb
     betterdiscord-installer
 
     #utils
     fzf
-    grc
     fasd
     vifm
     wlr-randr
     git
     gitflow
-    rustup
     gnumake
     catimg
     curl
@@ -43,9 +39,8 @@
     pavucontrol
 
     #misc 
-    cava
-    nano
     rofi
+    httpie
     nitch
     wget
     grim
