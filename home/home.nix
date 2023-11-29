@@ -14,6 +14,13 @@
   };
 
   home.packages = (with pkgs; [
+    # vIM 
+    ripgrep
+    fd
+    lazygit
+    unzip
+    gcc
+    tree-sitter
 
     #User Apps
     celluloid
@@ -24,6 +31,7 @@
     betterdiscord-installer
 
     #utils
+    flameshot
     fzf
     fasd
     vifm
@@ -39,6 +47,7 @@
     pavucontrol
 
     #misc 
+    telegram-desktop
     rofi
     httpie
     nitch

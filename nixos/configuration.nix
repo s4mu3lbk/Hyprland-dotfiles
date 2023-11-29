@@ -17,6 +17,13 @@
 
   services.system76-scheduler.settings.cfsProfiles.enable = true;
 
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   ## Power
   services.thermald.enable = true;
 
@@ -112,10 +119,10 @@
     options = "--delete-older-than 7d";
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    channel = "https://nixos.org/channels/nixos-23.05";
-  };
+  #system.autoUpgrade = {
+  #  enable = true;
+  #  channel = "https://nixos.org/channels/nixos-23.05";
+  #};
 
   system.stateVersion = "23.05";
 

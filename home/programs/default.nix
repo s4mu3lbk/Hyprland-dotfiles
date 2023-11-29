@@ -11,5 +11,6 @@
     ./tmux
     ./direnv
     ./starship
+    ./nixvim.nix
   ];
 }
